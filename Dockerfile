@@ -29,9 +29,9 @@ RUN apt-get update
 RUN apt-get install -y docker-ce-cli
 RUN apt-get clean
 
-COPY --from=builder /app/target/release/timebot_bot /app/
+COPY --from=builder /app/target/release/time_bot /app/
 COPY --from=builder /app/assets/* /app/assets/
 
 HEALTHCHECK --interval=1m --timeout=3s --retries=3 --start-period=20s CMD curl -f http://localhost:3000/healthcheck || exit 1
 
-CMD [ "/app/timebot_bot" ]
+CMD [ "/app/time_bot" ]
